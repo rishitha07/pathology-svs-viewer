@@ -73,8 +73,10 @@ pathology-svs-viewer/
 ├── cantaloupe.properties
 └── README.md
 
-## 🖼️ Screenshots
+## 📸 Screenshots
 
-![alt text](<Screenshot 2025-06-23 at 12.43.41 PM.png>)
+### Slide Viewer UI
+![Viewer Screenshot](screenshots/viewer.png)
+
 
 
