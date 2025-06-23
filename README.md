@@ -46,7 +46,7 @@ This will start the following containers:
 
 🛢️ MySQL database (localhost:3306) (optional, used for logging uploads)
 
-📂 Usage
+## 📂 Usage
 🔼 Uploading Slides
 Upload .svs files using the form on viewer.html
 
@@ -60,7 +60,7 @@ Direct IIIF URL (for testing):
 
 http://localhost:8182/iiif/2/CMU-1-Small-Region.svs/full/full/0/default.jpg
 
-📁 Folder Structure
+## 📁 Folder Structure
 
 pathology-svs-viewer/
 ├── apache-php/
@@ -73,7 +73,7 @@ pathology-svs-viewer/
 ├── cantaloupe.properties
 └── README.md
 
-🖼️ Screenshots
+## 🖼️ Screenshots
 
 ![alt text](<Screenshot 2025-06-23 at 12.43.41 PM.png>)
 
