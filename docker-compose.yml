@@ -1,0 +1,43 @@
+services:
+  apache-php:
+    build: ./apache-php
+    container_name: apache_php_server
+    ports:
+      - "8080:80"
+    volumes:
+      - ./apache-php:/var/www/html
+      - ./uploads:/var/www/html/uploads
+      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=svs_db
+
+  mysql:
+    image: mysql:5.7
+    platform: linux/amd64
+    container_name: mysql_server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: svs_db
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  cantaloupe:
+    build: 
+      context: .
+      dockerfile: Dockerfile.cantaloupe
+    container_name: cantaloupe_server
+    ports:
+      - "8182:8182"
+    environment:
+      - CANTALOUPE_CONFIG=/cantaloupe.properties
+    volumes:
+      - ./uploads:/imageroot
+      - ./cantaloupe.properties:/cantaloupe.properties

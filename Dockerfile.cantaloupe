@@ -1,0 +1,19 @@
+FROM uclalibrary/cantaloupe:5.0.5
+
+USER root
+
+# Install tools and verify
+RUN apt-get update && \
+    apt-get install -y openslide-tools libopenslide0 && \
+    which openslide-show && \
+    openslide-show --version || true && \
+    apt-get clean
+
+# Set ENV (optional, if using properties file)
+ENV CANTALOUPE_FILESYSTEMSOURCE_PATHNAME=/imageroot \
+    CANTALOUPE_SOURCE_STATIC=FilesystemSource \
+    CANTALOUPE_PROCESSOR_SELECTION_STRATEGY=ManualSelectionStrategy \
+    CANTALOUPE_PROCESSOR_MANUAL=OpenSlideProcessor \
+    CANTALOUPE_LOGAPPLICATION_ENABLED=true
+
+VOLUME /imageroot
