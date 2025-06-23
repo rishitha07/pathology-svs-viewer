@@ -1,4 +1,8 @@
 uploads/
 mysql/
+*.svs
 *.log
-.env
+Dockerfile*
+docker-compose.yml
+php.ini
+*.php
