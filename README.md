@@ -76,7 +76,7 @@ pathology-svs-viewer/
 ## 📸 Screenshots
 
 ### Slide Viewer UI
-![Viewer Screenshot](screenshots/viewer.png)
+![Viewer Screenshot](Screenshots/Screenshot-Viewer.png)
 
 
 
