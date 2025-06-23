@@ -45,7 +45,7 @@
 
     // Load file list into dropdown
     function populateDropdown() {
-      fetch("list_files.php")
+      fetch("http://localhost:9086/slides")
         .then((res) => res.json())
         .then((files) => {
           dropdown.innerHTML = `<option value="">-- Select SVS file --</option>`;
@@ -68,7 +68,7 @@
     document.getElementById("uploadForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const formData = new FormData(this);
-      fetch("upload.php", {
+      fetch("http://localhost:9086/upload", {
         method: "POST",
         body: formData,
       })
