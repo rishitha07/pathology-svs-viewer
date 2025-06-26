@@ -41,3 +41,13 @@ services:
     volumes:
       - ./uploads:/imageroot
       - ./cantaloupe.properties:/cantaloupe.properties
+
+  java-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.java
+    container_name: java_backend
+    ports:
+      - "9086:9086"
+    volumes:
+      - ./uploads:/var/www/html/uploads

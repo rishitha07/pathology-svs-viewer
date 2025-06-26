@@ -13,14 +13,14 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class FileUploadController {
 
-    private static final String UPLOAD_DIR = "uploads/";
+    private static final String UPLOAD_DIR = "/var/www/html/uploads/";
 
     @GetMapping("/")
     public String home() {
         return "Java backend for Pathology SVS Viewer is running!";
     }
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadFile(@RequestParam("svsFile") MultipartFile file) {
         try {
             Path uploadPath = Paths.get(UPLOAD_DIR);
             if (!Files.exists(uploadPath)) {
@@ -29,10 +29,12 @@ public class FileUploadController {
 
             Path filePath = uploadPath.resolve(file.getOriginalFilename());
             Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("Uploading: " + file.getOriginalFilename());
 
             return ResponseEntity.ok("File uploaded: " + file.getOriginalFilename());
         } catch (IOException e) {
-            return ResponseEntity.status(500).body("Upload failed.");
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Upload failed: " + e.getMessage());
         }
     }
 
